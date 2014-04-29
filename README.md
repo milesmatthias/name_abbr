@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/name_abbr.svg)](http://badge.fury.io/rb/name_abbr)
+
 name_abbr
 =========
 
