@@ -1,6 +1,9 @@
 class NameAbbr
   def self.abbr_name(first_name, last_name)
-    if present?(last_name) && first_name.is_a?(String) && last_name.is_a?(String)
+    first_name = normalize(first_name)
+    last_name = normalize(last_name)
+
+    unless last_name.nil?
       [first_name, last_name[0]].join(' ') + "."
     else
       first_name
@@ -8,7 +11,9 @@ class NameAbbr
   end
 
   def self.abbr_full_name(fullname)
-    if present?(fullname) && fullname.is_a?(String) && present?(fullname.match(/ /))
+    fullname = normalize(fullname)
+
+    unless fullname.match(/ /).nil?
       parts = fullname.split(' ')
       [parts[0], parts[1][0]].join(' ') + "."
     else
@@ -17,7 +22,7 @@ class NameAbbr
   end
 
   private
-  def self.present?(str)
-    !str.nil? && str.length > 0
+  def self.normalize(input)
+    input.to_s.strip
   end
 end
