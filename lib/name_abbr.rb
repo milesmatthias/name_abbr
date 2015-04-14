@@ -1,4 +1,4 @@
-class NameAbbr
+module NameAbbr
   def self.abbr_name(first_name, last_name)
     first_name = normalize(first_name)
     last_name = normalize(last_name)
@@ -23,6 +23,14 @@ class NameAbbr
 
   private
   def self.normalize(input)
-    input.to_s.strip
+    return nil if input.nil?
+
+    ret = input.to_s.strip.split(" ").map(&:capitalize).join(" ")
+
+    ret.gsub!(/\-(.)/) do |match|
+      "-#{ match[-1].upcase }"
+    end
+
+    ret
   end
 end
