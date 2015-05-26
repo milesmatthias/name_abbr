@@ -15,7 +15,7 @@ module NameAbbr
 
     unless fullname.match(/ /).nil?
       parts = fullname.split(' ')
-      [parts[0], parts[1][0]].join(' ') + "."
+      [parts[0], parts[parts.length-1][0]].join(' ') + "."
     else
       fullname
     end
